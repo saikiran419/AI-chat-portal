@@ -1,0 +1,201 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Chat Container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #16161a;
+}
+
+/* App Bar */
+.app-bar {
+  background-color: #242629 !important;
+}
+
+.app-bar-title {
+  flex-grow: 1;
+}
+
+/* Chat History */
+.chat-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Message */
+.message {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.assistant {
+  justify-content: flex-start;
+}
+
+.message-paper {
+  padding: 12px 20px;
+  color: #fffffe;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 70%;
+}
+
+.message.user .message-paper {
+  background-color: #7f5af0;
+  border-radius: 20px 20px 5px 20px;
+}
+
+.message.assistant .message-paper {
+  background-color: #2cb67d;
+  border-radius: 20px 20px 20px 5px;
+}
+
+.message-content {
+  word-wrap: break-word;
+}
+
+.message-timestamp {
+  font-size: 0.75rem;
+  color: #94a1b2;
+  margin-top: 8px;
+}
+
+.message.user .message-timestamp {
+  text-align: right;
+}
+
+.message.assistant .message-timestamp {
+  text-align: left;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.typing-indicator .message-paper {
+  padding: 12px 20px;
+  background-color: #2cb67d;
+  color: #fffffe;
+  border-radius: 20px 20px 20px 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Message Input */
+.message-input-container {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #242629;
+}
+
+.message-input {
+  flex-grow: 1;
+}
+
+.message-input .MuiOutlinedInput-root {
+  border-radius: 20px;
+}
+
+.message-input .MuiOutlinedInput-notchedOutline {
+  border-color: #94a1b2;
+}
+
+.message-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #7f5af0;
+}
+
+.message-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #7f5af0;
+}
+
+.send-button {
+  margin-left: 12px;
+}
+
+/* 3D Card Effect for Chat Container */
+.chat-card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  perspective: 1000px; /* Re-added for debugging */
+  position: relative; /* Needed for pseudo-elements or absolute positioning within */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Initial subtle shadow */
+}
+
+.chat-card-3d:hover {
+  transform: rotateX(5deg) rotateY(5deg) translateZ(20px) !important; /* Subtle 3D tilt and lift */
+  box-shadow: 0 15px 30px rgba(127, 90, 240, 0.4) !important; /* Enhanced shadow with primary color glow */
+  z-index: 10; /* Ensure it's on top */
+}
+
+/* Adding a subtle futuristic border/glow effect */
+.chat-card-3d::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #7f5af0, #2cb67d);
+  z-index: -1;
+  border-radius: 8px; /* Match container's border-radius */
+  opacity: 0;
+  transition: opacity 0.3s ease-out, filter 0.3s ease-out; /* Add filter to transition */
+  filter: blur(0px); /* Initial blur */
+}
+
+.chat-card-3d:hover::before {
+  opacity: 1;
+  filter: blur(4px); /* Animate blur on hover */
+}
+
+@keyframes pulse-mic {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.mic-listening {
+  animation: pulse-mic 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-mic {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.mic-listening {
+  animation: pulse-mic 1.5s infinite ease-in-out;
+}
